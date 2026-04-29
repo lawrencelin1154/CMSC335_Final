@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #0b0d17;
+  color: #f5f5f7;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+/* ── Typography ── */
+h1, h2, h3, .hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #fdb927;
+  letter-spacing: 0.04em;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.25rem; color: #f5f5f7; }
+
+a { color: #fdb927; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Video Hero Background ── */
+.home-hero {
+  position: relative;
+  height: calc(100vh - 56px); /* full viewport minus navbar */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.video-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.video-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* scale to always cover the container regardless of aspect ratio */
+  width: 100vw;
+  height: 56.25vw;   /* 9/16 × 100vw */
+  min-height: 100%;
+  min-width: 177.78vh; /* 16/9 × 100vh */
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* ── NavBar ── */
+.navbar {
+  background-color: #552583;
+  color: #fdb927;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: #fdb927;
+}
+
+.navbar-links { display: flex; gap: 1.5rem; }
+
+.navbar-links a {
+  color: #f5f5f7;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.navbar-links a:hover, .navbar-links a.active {
+  color: #fdb927;
+  text-decoration: none;
+}
+
+/* ── Layout ── */
+.page { padding: 2rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+
+/* ── Hero ── */
+.hero {
+  background-color: #1a1d2e;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-title { font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; }
+.hero-subtitle { color: #a0a3b1; font-size: 1.05rem; }
+
+.profile-card {
+  background-color: #252839;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+.profile-card .label { font-size: 0.75rem; color: #a0a3b1; text-transform: uppercase; letter-spacing: 0.08em; }
+.profile-card .value { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+/* ── Filter Form ── */
+.filter-form {
+  background-color: #1a1d2e;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.filter-form label { font-size: 0.85rem; color: #a0a3b1; display: block; margin-bottom: 0.25rem; }
+
+.filter-form select {
+  background-color: #252839;
+  color: #f5f5f7;
+  border: 1px solid #3a3e54;
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.filter-form select:focus { outline: 2px solid #fdb927; }
+
+/* ── Buttons ── */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn:hover { opacity: 0.85; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary { background-color: #fdb927; color: #0b0d17; }
+.btn-secondary { background-color: #552583; color: #fdb927; }
+.btn-danger { background-color: #c0392b; color: #fff; }
+
+/* ── Game Grid ── */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Game Card ── */
+.card {
+  background-color: #1a1d2e;
+  color: #f5f5f7;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid #252839;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-date { font-size: 0.8rem; color: #a0a3b1; }
+
+.card-matchup {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: #fdb927;
+}
+
+.card-score { font-size: 1rem; font-weight: 600; }
+
+.card-footer { margin-top: auto; padding-top: 0.75rem; }
+
+.tag {
+  display: inline-block;
+  background-color: #252839;
+  color: #fdb927;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  margin: 0.15rem 0.15rem 0 0;
+}
+
+/* ── Notes Form ── */
+.notes-form { margin-top: 0.75rem; }
+
+.notes-form textarea {
+  width: 100%;
+  background-color: #0b0d17;
+  color: #f5f5f7;
+  border: 1px solid #3a3e54;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  min-height: 70px;
+}
+
+.notes-form input[type="text"] {
+  width: 100%;
+  background-color: #0b0d17;
+  color: #f5f5f7;
+  border: 1px solid #3a3e54;
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  margin: 0.4rem 0;
+}
+
+.notes-form textarea:focus,
+.notes-form input:focus { outline: 2px solid #fdb927; }
+
+.notes-form label { font-size: 0.8rem; color: #a0a3b1; display: block; margin-top: 0.5rem; }
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* ── Status messages ── */
+.loading { color: #a0a3b1; text-align: center; padding: 2rem; }
+.error-msg { color: #e74c3c; background-color: #2c1216; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.9rem; }
+.empty-msg { color: #a0a3b1; text-align: center; padding: 3rem 1rem; }
+
+/* ── Saved indicator ── */
+.saved-badge {
+  font-size: 0.75rem;
+  background-color: #1a4a1a;
+  color: #4ade80;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  h1 { font-size: 2.5rem; }
+  .hero { flex-direction: column; }
+  .filter-form { flex-direction: column; }
+}
