@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,12 +14,6 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/api', require('./routes/api'));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/dist')));
-  app.get('/{*splat}', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/dist/index.html'));
-  });
-}
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
